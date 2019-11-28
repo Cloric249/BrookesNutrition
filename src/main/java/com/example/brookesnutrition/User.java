@@ -2,12 +2,14 @@ package com.example.brookesnutrition;
 
 
 public class User {
-    private double mass;
+    private double weight;
     private double height;
     private int age;
     private boolean initalizing = true;
     private String name;
     private String sex;
+    public int stepsGoal;
+    public int caloriesGoal;
 
     public User(String name, int age){
         while(initalizing == true){
@@ -41,12 +43,12 @@ public class User {
         this.age = age;
     }
 
-    public void setMass(double mass){
-        this.mass = mass;
+    public void setWeight(double weight){
+        this.weight = weight;
     }
 
-    public double getMass(){
-        return mass;
+    public double getWeight(){
+        return weight;
     }
 
     public void setHeight(double height){
@@ -76,17 +78,17 @@ public class User {
         if (height > 5){
             tmpheight = height/100;
         }
-        BMI = mass/(tmpheight);
+        BMI = Weight/(tmpheight);
         return BMI;
     }
 
     public double calculateBMR(){
         double BMR;
         if (sex.equals("Male") || sex.equals("male")){
-            BMR = 66.47 + (13.75 * mass) + (5.003 * height) - (6.755 * age);
+            BMR = 66.47 + (13.75 * weight) + (5.003 * height) - (6.755 * age);
         }
         else {
-            BMR = 655.1 + (9.563 * mass) + (1.85 * height) - (4.676 * age);
+            BMR = 655.1 + (9.563 * weight) + (1.85 * height) - (4.676 * age);
         }
         return BMR;
     }
