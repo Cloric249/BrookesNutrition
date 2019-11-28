@@ -92,6 +92,13 @@ public class User {
         }
         return BMR;
     }
+    
+    public fitnessPlan(){
+        System.out.println("Please select the fitness plan you would like to choose");
+        System.out println("Strength & Training);
+        System.out println("Cardio & Conditiong);
+        System.out println("To Be Added");     
+        
 
 }
 
