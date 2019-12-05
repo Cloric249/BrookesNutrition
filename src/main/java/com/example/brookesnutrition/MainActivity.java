@@ -1,5 +1,7 @@
 package com.example.brookesnutrition;
 
+import Step;
+import User;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -107,5 +109,33 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+        }
     }
+
+
+    boolean programRunning = true;
+
+    System.out.println("Please select the fitness plan you would like to choose");
+    System.out.println("S)trength & Training");
+    System.out.println("C)ardio & Conditioning");
+
+    String plan = input.nextLine();
+
+    if (plan.equals("S" || "s" || "S)" || "s)")){
+        while (programRunning){
+            String stored = input.nextLine();
+
+            System.out.println(line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n"+ line6 + "\n" + line7+ "\n" + line8);
+            System.out.println(info1 + "\n" + info2);
+
+        if (plan.equals("C" || "c" || "C)" || "c)")){
+            while (programRunning){
+                System.out.println("This is not programmed yet");
+            }
+
+            }
+
+            }
+
+
 }
