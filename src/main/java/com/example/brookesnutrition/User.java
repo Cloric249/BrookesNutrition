@@ -93,11 +93,41 @@ public class User {
         return BMR;
     }
     
-    public fitnessPlan(){
-        System.out.println("Please select the fitness plan you would like to choose");
-        System.out println("Strength & Training);
-        System.out println("Cardio & Conditiong);
-        System.out println("To Be Added");     
+    public void fitnessPlan(){
+        String line1 = "Day A";
+        String line2 = "3x5+ Barbell Rows";
+        String line3 = "3x5+ Bench Press";
+        String line4 = "3x5+ Squats";
+        String line5 = "Day B";
+        String line6 = "3x5+ Chinups";
+        String line7 = "3x5+ Overhead Press";
+        String line8 = "3x5+ Deadlift";
+
+        String line9 = "Day A";
+        String line10 = "3x5+ Barbell Rows";
+        String line11 = "3x5+ Bench Press";
+        String line12 = "3x5+ Squats";
+        String line13 = "Day B";
+        String line14 = "3x5+ Chinups";
+        String line15 = "3x5+ Overhead Press";
+        String line16 = "3x5+ Deadlift";
+
+        String info1 ("Notation is Sets x Reps. + equals As Many Reps As Possible, but not for the last set");
+        String info2 ("Rest 2-3 minutes between each set, depending on how you feel");
+
+        String progression1 ("Add 2.5kg to the upper body lifts you each day");
+        String progression2 ("Add 5kg to the lower body lifts each day you do the lift");
+        String progression2 ("If you do more than 10 reps on your AMRAP set, double the weight progression and and 5/10kg's instead");
+        String progression2 ("If you fail to complete at least 15 total reps for a lift, deload by subtracting 10% from the weight the next time you do that lift");
+
+        public void stored(String s){
+
+        }
+        }
+
+
+
+
         
 
 }
