@@ -2,11 +2,15 @@ package com.example.brookesnutrition.ui.main;
 
 import android.content.Context;
 import android.net.Uri;
+<<<<<<< HEAD
 import android.os.Build;
+=======
+>>>>>>> Initial commit
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+<<<<<<< HEAD
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -31,6 +35,14 @@ import java.util.ArrayList;
 
 
 
+=======
+import android.widget.Button;
+import android.widget.EditText;
+
+import androidx.fragment.app.Fragment;
+
+import com.example.brookesnutrition.R;
+>>>>>>> Initial commit
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,6 +53,7 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class frag2 extends Fragment {
+<<<<<<< HEAD
     private SearchView search;
     private ListView results;
     public static HttpURLConnection connection;
@@ -48,6 +61,10 @@ public class frag2 extends Fragment {
     private Double totalcal = 0.0;
 
     ArrayList<Food> filteredFoodResults = new ArrayList<Food>();
+=======
+    EditText food;
+    Button addFood;
+>>>>>>> Initial commit
 
 
     private OnFragmentInteractionListener mListener;
@@ -73,6 +90,7 @@ public class frag2 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
         context = getActivity().getApplicationContext();
 
 
@@ -193,6 +211,15 @@ public class frag2 extends Fragment {
 
 
         return view;
+=======
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_frag2, container, false);
+>>>>>>> Initial commit
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -219,6 +246,12 @@ public class frag2 extends Fragment {
         mListener = null;
     }
 
+<<<<<<< HEAD
+=======
+    public void setAddFood() {
+        food = getView().findViewById(R.id.food);
+    }
+>>>>>>> Initial commit
 
     /**
      * This interface must be implemented by activities that contain this
@@ -234,6 +267,7 @@ public class frag2 extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+<<<<<<< HEAD
 
     public class foodAdapter extends ArrayAdapter<Food> {
 
@@ -280,4 +314,7 @@ public class frag2 extends Fragment {
 
 
 
+=======
+}
+>>>>>>> Initial commit
 

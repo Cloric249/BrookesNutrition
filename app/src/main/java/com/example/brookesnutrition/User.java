@@ -10,7 +10,11 @@ public class User implements Parcelable {
     private int age;
     private String name;
     private String sex;
+<<<<<<< HEAD
 
+=======
+    private String plan;
+>>>>>>> Initial commit
 
     public User(){
 
@@ -55,6 +59,11 @@ public class User implements Parcelable {
         return sex;
     }
 
+<<<<<<< HEAD
+=======
+    public String setPlan() { return plan; }
+
+>>>>>>> Initial commit
     public double calculateBMI(){
         double BMI;
         double tmpheight = height;
@@ -83,6 +92,10 @@ public class User implements Parcelable {
         sex = in.readString();
         height = in.readInt();
         mass = in.readDouble();
+<<<<<<< HEAD
+=======
+        plan = in.readString();
+>>>>>>> Initial commit
 
     }
 
@@ -98,6 +111,10 @@ public class User implements Parcelable {
         dest.writeString(sex);
         dest.writeInt(height);
         dest.writeDouble(mass);
+<<<<<<< HEAD
+=======
+        dest.writeString(plan);
+>>>>>>> Initial commit
     }
 
     @SuppressWarnings("unused")

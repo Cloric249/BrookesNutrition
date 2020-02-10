@@ -203,5 +203,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         }
+<<<<<<< HEAD
 
+=======
+    public boolean setPlan = false;
+>>>>>>> Initial commit
 }

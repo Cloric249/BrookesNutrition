@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.brookesnutrition">
     <uses-permission android:name="android.permission.INTERNET" />
@@ -8,6 +9,9 @@
 
 
 
+=======
+    package="com.example.brookesnutrition">
+>>>>>>> Initial commit
 
     <application
         android:allowBackup="true"
@@ -28,13 +32,17 @@
             android:name=".Main3Activity"
             android:label="@string/title_activity_main3"
             android:theme="@style/AppTheme.NoActionBar" />
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> Initial commit
         <activity android:name=".Main2Activity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
+<<<<<<< HEAD
 
         </activity>
         <service
@@ -48,6 +56,14 @@
 
         <receiver android:name=".AlertReceiver"/>
 
+=======
+        </activity>
+        <activity
+            android:name=".FitnessPlans"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+>>>>>>> Initial commit
     </application>
 
 </manifest>

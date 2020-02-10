@@ -12,6 +12,31 @@
         android:layout_height="match_parent"
         android:text="@string/frag1" />
 
+<<<<<<< HEAD
 
+=======
+    <Button
+        android:id="@+id/add_food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="99dp"
+        android:layout_marginBottom="30dp"
+        android:text="Add food" />
+
+    <EditText
+        android:id="@+id/food"
+        android:layout_width="196dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginRight="99dp"
+        android:layout_marginBottom="100dp" />
+>>>>>>> Initial commit
 
 </FrameLayout>
