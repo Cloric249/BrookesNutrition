@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "86271341891",
+    "firebase_url": "https://brookesnutrition-55569.firebaseio.com",
+    "project_id": "brookesnutrition-55569",
+    "storage_bucket": "brookesnutrition-55569.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:86271341891:android:6a9f654ffba59e1d1fabf6",
+        "android_client_info": {
+          "package_name": "com.example.brookesnutrition"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "86271341891-pmahu6a31dnrmpbco8uitld608b53eu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxAvErnCv9AxjRGCuLPMIW2SEo_-qiAuQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "86271341891-pmahu6a31dnrmpbco8uitld608b53eu7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
