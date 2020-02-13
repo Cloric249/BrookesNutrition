@@ -53,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
         final Button registerButton = findViewById(R.id.register);
+        final Button skipButton = findViewById(R.id.skip);
         fbaseAuth = FirebaseAuth.getInstance();
 
 
@@ -93,7 +94,16 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        skipButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,Main3Activity.class);
+                startActivity(intent);
+            }
+        });
     }
+
 }
 
 
