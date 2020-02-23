@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="329dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Product_name"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/food_cal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/result"
+        android:layout_marginTop="5dp"
+        android:text="Cal"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/food_cal"
+        android:layout_below="@+id/result"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:text="Quantity:"
+        android:textColor="#000000"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/quantity_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/quantity"
+        android:layout_below="@+id/result"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="1"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        />
+
+</RelativeLayout>
