@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,8 +25,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.Response.Listener;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.brookesnutrition.Food;
@@ -46,6 +51,8 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -68,7 +75,10 @@ public class frag2 extends Fragment {
     private String found = "N";
     Typeface type;
     public static HttpURLConnection connection;
+    public static HttpURLConnection connection2;
+    private RequestQueue mQueue;
     private Context context;
+    private Double totalcal = 0.0;
 
     ArrayList<Food> filteredFoodResults = new ArrayList<Food>();
 
@@ -106,6 +116,7 @@ public class frag2 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_frag2, container, false);
         ArrayList<Food> foodResults = new ArrayList<Food>();
         final foodAdapter adapter = new foodAdapter(context, foodResults);
+        mQueue = Volley.newRequestQueue(context);
 
         search = view.findViewById(R.id.search);
         results = view.findViewById(R.id.list);
@@ -149,7 +160,7 @@ public class frag2 extends Fragment {
                                 connection.setRequestProperty("x-app-key", "0146ee08a7830b6a5afc79213bd8a0ba");
                                 connection.connect();
 
-                                JSONObject jsonObject = new JSONObject();
+                                final JSONObject jsonObject = new JSONObject();
                                 jsonObject.put("query", search.getQuery().toString());
                                 DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
                                 wr.writeBytes(jsonObject.toString());
@@ -178,65 +189,19 @@ public class frag2 extends Fragment {
                                         }
                                     });
 
-
-                                    /*Thread thread2 = new Thread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            try {
-                                            URL url = new URL("https://trackapi.nutritionix.com/v2/search/item");
-                                            connection = (HttpURLConnection) url.openConnection();
-                                            connection.setDoOutput(true);
-                                            connection.setReadTimeout(10000);
-                                            connection.setConnectTimeout(15000);
-                                            connection.setRequestMethod("POST"); // here you are telling that it is a POST request, which can be changed into “PUT”, “GET”, “DELETE” etc.
-                                            connection.setRequestProperty("Content-Type", "application/json"); // here you are setting the `Content-Type` for the data you are sending which is `application/json`
-                                            connection.setRequestProperty("x-app-id", "4e39bb2f");
-                                            connection.setRequestProperty("x-app-key", "0146ee08a7830b6a5afc79213bd8a0ba");
-                                            connection.connect();
-
-                                            JSONObject jsonObject = new JSONObject();
-                                            jsonObject.put("query", name);
-                                            DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-                                            wr.writeBytes(jsonObject.toString());
-                                            wr.flush();
-                                            wr.close();
-                                            String json_response = "";
-                                            InputStreamReader in = new InputStreamReader(connection.getInputStream());
-                                            BufferedReader br = new BufferedReader(in);
-                                            String text = "";
-                                            while ((text = br.readLine()) != null){
-                                                json_response += text;
-                                            }
-                                            JSONObject nutrition = new JSONObject(json_response);
-                                            JSONArray foods = nutrition.getJSONArray("common");
-
-
-
-
-
-
-                                            } catch (MalformedURLException e) {
-                                                e.printStackTrace();
-                                            } catch (IOException e) {
-                                                e.printStackTrace();
-                                            } catch (JSONException e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-                                    });
-                                    //*/
                                 }
 
 
 
-
-                                int status = connection.getResponseCode();
                             } catch (MalformedURLException e) {
                                 e.printStackTrace();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                            }
+                            finally{
+                                connection.disconnect();
                             }
                         }
 
@@ -310,19 +275,74 @@ public class frag2 extends Fragment {
         }
         @Override
         public View getView(int position, View convertView, ViewGroup parent){
-            Food food = getItem(position);
+            final Food food = getItem(position);
             if (convertView == null){
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.results,parent,false);
                 }
 
             TextView foodName = (TextView) convertView.findViewById(R.id.result);
-            //TextView foodCal = (TextView) convertView.findViewById(R.id.food_cal);
+            TextView foodCal = (TextView) convertView.findViewById(R.id.food_cal);
+            Button addcal = (Button) convertView.findViewById(R.id.add);
 
             foodName.setText(food.getName());
-            //foodCal.setText(food.getCalories());
+            double calstr = food.getCalories();
+            foodCal.setText(Double.toString(calstr));
+
+            addcal.setTag(position);
+
+            addcal.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = (Integer) v.getTag();
+                    Double calories = food.getCalories();
+                    totalcal += calories;
+                    Toast.makeText(context,"Total calories:" + totalcal, Toast.LENGTH_SHORT).show();
+                }
+            });
 
             return convertView;
             }
+        }
+
+        public void jsonParse(){
+            String url = "https://trackapi.nutritionix.com/v2/search/instant";
+
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,url, null, new Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put("query", search.getQuery().toString());
+                        JSONArray jsonArray = response.getJSONArray("common");
+
+                        for (int i = 0; i < jsonArray.length(); i++){
+                            JSONObject food = jsonArray.getJSONObject(i);
+
+                            String name = food.getString("food_name");
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(context, "ERROR", Toast.LENGTH_SHORT).show();
+                    
+                }
+            })
+            {
+
+            public Map<String,String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("x-app-id", "4e39bb2f");
+                params.put("x-app-key", "0146ee08a7830b6a5afc79213bd8a0ba");
+                return params;
+            }
+
+            };
+            mQueue.add(request);
         }
     }
 
