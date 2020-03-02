@@ -165,6 +165,7 @@ public class frag4 extends Fragment {
                                 getActivity().runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+                                        info.setText("");
                                         info.append(strName + "\n");
                                         info.append("Weight: " + strWeight + "g" + "\n");
                                         info.append("Calories: " + strcal + "Kcal" + "\n");
