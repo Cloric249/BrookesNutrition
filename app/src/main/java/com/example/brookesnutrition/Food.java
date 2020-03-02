@@ -13,7 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import static com.example.brookesnutrition.ui.main.frag2.connection;
-import static com.example.brookesnutrition.ui.main.frag2.connection2;
+
 
 public class Food {
     private double calories;

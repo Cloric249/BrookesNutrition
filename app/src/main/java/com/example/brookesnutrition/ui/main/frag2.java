@@ -1,64 +1,35 @@
 package com.example.brookesnutrition.ui.main;
 
-import android.app.ProgressDialog;
-import android.app.VoiceInteractor;
 import android.content.Context;
-import android.graphics.Typeface;
 import android.net.Uri;
-import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.Response.Listener;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.brookesnutrition.Food;
-import com.example.brookesnutrition.Main3Activity;
 import com.example.brookesnutrition.R;
-import com.google.gson.JsonObject;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-import static android.provider.Contacts.SettingsColumns.KEY;
 
 
 /**
@@ -72,11 +43,7 @@ import static android.provider.Contacts.SettingsColumns.KEY;
 public class frag2 extends Fragment {
     private SearchView search;
     private ListView results;
-    private String found = "N";
-    Typeface type;
     public static HttpURLConnection connection;
-    public static HttpURLConnection connection2;
-    private RequestQueue mQueue;
     private Context context;
     private Double totalcal = 0.0;
 
@@ -111,12 +78,13 @@ public class frag2 extends Fragment {
 
     }
 
+
+    @androidx.annotation.RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_frag2, container, false);
         ArrayList<Food> foodResults = new ArrayList<Food>();
         final foodAdapter adapter = new foodAdapter(context, foodResults);
-        mQueue = Volley.newRequestQueue(context);
 
         search = view.findViewById(R.id.search);
         results = view.findViewById(R.id.list);
@@ -304,46 +272,7 @@ public class frag2 extends Fragment {
             }
         }
 
-        public void jsonParse(){
-            String url = "https://trackapi.nutritionix.com/v2/search/instant";
 
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,url, null, new Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    try {
-                        JSONObject jsonObject = new JSONObject();
-                        jsonObject.put("query", search.getQuery().toString());
-                        JSONArray jsonArray = response.getJSONArray("common");
-
-                        for (int i = 0; i < jsonArray.length(); i++){
-                            JSONObject food = jsonArray.getJSONObject(i);
-
-                            String name = food.getString("food_name");
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(context, "ERROR", Toast.LENGTH_SHORT).show();
-                    
-                }
-            })
-            {
-
-            public Map<String,String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("x-app-id", "4e39bb2f");
-                params.put("x-app-key", "0146ee08a7830b6a5afc79213bd8a0ba");
-                return params;
-            }
-
-            };
-            mQueue.add(request);
-        }
     }
 
 
