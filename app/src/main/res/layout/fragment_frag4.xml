@@ -37,5 +37,17 @@
         android:layout_marginTop="90dp"
         />
 
+    <TextView
+        android:id="@+id/information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittextbox"
+        android:height="200dp"
+        android:lines="11"
+        android:layout_marginTop="350dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:hint="Ingredient information appears here" />
+
 
 </RelativeLayout>
