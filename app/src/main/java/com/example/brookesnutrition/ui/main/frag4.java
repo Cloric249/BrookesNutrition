@@ -1,8 +1,14 @@
 package com.example.brookesnutrition.ui.main;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +20,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
-import com.example.brookesnutrition.Food;
+import com.example.brookesnutrition.AlertReceiver;
+import com.example.brookesnutrition.FireMessage;
+import com.example.brookesnutrition.MyFirebaseMessagingService;
 import com.example.brookesnutrition.R;
 import com.example.brookesnutrition.User;
+import com.example.brookesnutrition.databaseHelper;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,6 +44,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 
 import okhttp3.Connection;
 
@@ -49,6 +61,7 @@ public class frag4 extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private Context context;
     private HttpURLConnection connection;
+    databaseHelper DB;
 
 
 
@@ -78,22 +91,45 @@ public class frag4 extends Fragment {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_frag4, container, false);
+        DB = new databaseHelper(context);
 
 
         Button button = view.findViewById(R.id.button_add);
+        Button button2 = view.findViewById(R.id.button_del);
         final EditText ingredient = view.findViewById(R.id.ingredient);
         final Spinner ingredients = view.findViewById(R.id.spinnerI);
         final TextView info = view.findViewById(R.id.information);
         ArrayList<String> lst = new ArrayList<String>();
 
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY, 20);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+
+        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
+
+
         final ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(context,android.R.layout.simple_list_item_1,
                 lst);
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ingredients.setAdapter(myAdapter);
+
+        Cursor res = DB.getFood();
+        if (res.getCount() != 0){
+            String preFood;
+            while(res.moveToNext()){
+                preFood = res.getString(0);
+                myAdapter.add(preFood);
+            }
+        }
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,9 +142,26 @@ public class frag4 extends Fragment {
 
                     myAdapter.add(ingStr);
                     myAdapter.notifyDataSetChanged();
+                    ingredients.setSelection(myAdapter.getPosition(ingStr));
+
+
 
                 }
 
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (myAdapter.getCount() != 0){
+                    DB.delete(myAdapter.getItem(ingredients.getSelectedItemPosition()));
+                    DB.getTotalCalories();
+                    myAdapter.remove(myAdapter.getItem(ingredients.getSelectedItemPosition()));
+
+
+
+                }
             }
         });
 
@@ -178,6 +231,9 @@ public class frag4 extends Fragment {
                                         info.append("Sugar: " + strSugars + "g" + "\n");
                                         info.append("Protein: " + strProtein + "g" + "\n");
 
+                                        DB.insertFood(ingSearch, strcal);
+                                        DB.getTotalCalories();
+
                                     }
                                 });
 
@@ -246,4 +302,5 @@ public class frag4 extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
 }

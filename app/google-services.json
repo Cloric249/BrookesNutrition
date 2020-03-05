@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "86271341891-bdnajik4l0ji7542t93up8b3c7sehl1d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.brookesnutrition",
+            "certificate_hash": "31da9a135d8e341b4e2d862dfd9261db50312da2"
+          }
+        },
+        {
           "client_id": "86271341891-pmahu6a31dnrmpbco8uitld608b53eu7.apps.googleusercontent.com",
           "client_type": 3
         }
