@@ -8,10 +8,16 @@ buildscript {
     }
     dependencies {
 <<<<<<< HEAD
+<<<<<<< HEAD
         classpath 'com.android.tools.build:gradle:3.6.0'
 =======
         classpath 'com.android.tools.build:gradle:3.5.2'
 >>>>>>> Initial commit
+||||||| constructed merge base
+        classpath 'com.android.tools.build:gradle:3.5.2'
+=======
+        classpath 'com.android.tools.build:gradle:3.5.3'
+>>>>>>> Sprint 4 Stuff
         classpath 'com.google.gms:google-services:4.3.3'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

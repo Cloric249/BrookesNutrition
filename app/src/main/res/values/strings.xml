@@ -46,6 +46,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <string name="default_notification_channel_id" />
     <string name="notification_channel_title" />
     <string name="dbnode_users" />
@@ -55,7 +56,13 @@
 
 =======
     <string-array name="fitness_plans">
+||||||| constructed merge base
+    <string-array name="fitness_plans">
+=======
+    <string-array name="fitness_plan">
+>>>>>>> Sprint 4 Stuff
         <item>Weight Loss</item>
+        <item>Bulk</item>
         <item>Cardio</item>
 >>>>>>> Initial commit
     </string-array>

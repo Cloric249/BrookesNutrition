@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 <<<<<<< HEAD
+<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
+||||||| constructed merge base
+=======
+    xmlns:tools="http://schemas.android.com/tools"
+>>>>>>> Sprint 4 Stuff
     package="com.example.brookesnutrition">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -19,24 +24,31 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".ui.login.LoginActivity"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login">
-	    <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-		<category android:name="android.intent.category.LAUNCHER" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-	</activity>
+        </activity>
         <activity
             android:name=".Main3Activity"
             android:label="@string/title_activity_main3"
             android:theme="@style/AppTheme.NoActionBar" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> Initial commit
+||||||| constructed merge base
+=======
+
+
+>>>>>>> Sprint 4 Stuff
         <activity android:name=".Main2Activity" />
         <activity
             android:name=".MainActivity"
@@ -58,10 +70,12 @@
 
 =======
         </activity>
-        <activity
-            android:name=".FitnessPlans"
-            android:label="@string/app_name"
+        <activity android:name=".FitnessPlan"
+            android:label="Fitness Plan"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 >>>>>>> Initial commit
     </application>

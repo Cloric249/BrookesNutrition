@@ -11,19 +11,20 @@ import java.util.Date;
 import android.os.Bundle;
 import android.widget.Toast;
 
-public class FitnessPlans extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class FitnessPlan extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fitness_plans);
+        setContentView(R.layout.activity_fitness_plan);
 
-        Spinner spinner = findViewById(R.id.spinner1);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.fitness_plans, android.R.layout.simple_spinner_item);
+        Spinner spinner = findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.fitness_plan, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
     }
+
     private boolean isDoneStretching = false;
     private boolean isDoneWorkout = false;
 
@@ -48,7 +49,7 @@ public class FitnessPlans extends AppCompatActivity implements AdapterView.OnIte
     private String squatCount = "";
 
     //Required empty constructor
-    public FitnessPlans() {
+    public FitnessPlan() {
 
     }
     public static String weightLoss; {
@@ -73,8 +74,8 @@ public class FitnessPlans extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+        String chosenFitnessPlan = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(), chosenFitnessPlan, Toast.LENGTH_SHORT).show();
     }
 
     @Override
