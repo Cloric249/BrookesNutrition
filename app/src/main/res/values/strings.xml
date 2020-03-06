@@ -37,8 +37,9 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string-array name="fitness_plans">
+    <string-array name="fitness_plan">
         <item>Weight Loss</item>
+        <item>Bulk</item>
         <item>Cardio</item>
     </string-array>
 </resources>
