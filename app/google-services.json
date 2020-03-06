@@ -15,7 +15,6 @@
       },
       "oauth_client": [
         {
-<<<<<<< HEAD
           "client_id": "86271341891-bdnajik4l0ji7542t93up8b3c7sehl1d.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -24,8 +23,6 @@
           }
         },
         {
-=======
->>>>>>> Initial commit
           "client_id": "86271341891-pmahu6a31dnrmpbco8uitld608b53eu7.apps.googleusercontent.com",
           "client_type": 3
         }

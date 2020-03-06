@@ -53,10 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
         final Button registerButton = findViewById(R.id.register);
-<<<<<<< HEAD
         final Button skipButton = findViewById(R.id.skip);
-=======
->>>>>>> Initial commit
         fbaseAuth = FirebaseAuth.getInstance();
 
 
@@ -97,7 +94,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-<<<<<<< HEAD
 
         skipButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,9 +104,6 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-=======
-    }
->>>>>>> Initial commit
 }
 
 

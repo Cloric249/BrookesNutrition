@@ -203,15 +203,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         }
-<<<<<<< HEAD
 
-=======
-    public boolean setPlan = false;
-<<<<<<< HEAD
->>>>>>> Initial commit
-||||||| constructed merge base
-=======
-
-
->>>>>>> Sprint 4 Stuff
 }
