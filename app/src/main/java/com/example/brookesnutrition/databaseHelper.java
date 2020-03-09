@@ -76,5 +76,13 @@ public class databaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME, "FOOD = ?", new String[] {name});
     }
+    public double getCalories(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from " + TABLE_NAME, null);
+        cursor.moveToFirst();
+        String strcal = cursor.getString( cursor.getColumnIndex("TOTAL_CALORIES") );
+        return Double.parseDouble(strcal);
+
+    }
 
 }
