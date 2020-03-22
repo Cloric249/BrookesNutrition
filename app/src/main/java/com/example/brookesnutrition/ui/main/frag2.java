@@ -46,8 +46,8 @@ public class frag2 extends Fragment {
     public static HttpURLConnection connection;
     private Context context;
     private Double totalcal = 0.0;
+    sendData omitData;
 
-    ArrayList<Food> filteredFoodResults = new ArrayList<Food>();
 
 
     private OnFragmentInteractionListener mListener;
@@ -110,6 +110,7 @@ public class frag2 extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                final ArrayList<String> omitList = omitData.getArrayList();
 
                 if (newText.length() > 2){
                     Thread thread = new Thread(new Runnable() {
@@ -148,15 +149,19 @@ public class frag2 extends Fragment {
                                 for (int i = 0; i < foods.length(); i++) {
                                     JSONObject jsonObject2 = foods.getJSONObject(i);
                                     final String name = jsonObject2.getString("food_name");
-                                    final Food food = new Food(name);
+                                    for (String str: omitList){
+                                        if (!name.contains(str)){
+                                            final Food food = new Food(name);
 
-                                    getActivity().runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            adapter.add(food);
+                                            getActivity().runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    adapter.add(food);
+                                                }
+                                            });
+
                                         }
-                                    });
-
+                                    }
                                 }
 
 
@@ -207,6 +212,7 @@ public class frag2 extends Fragment {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
+            omitData = (sendData) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

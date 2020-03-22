@@ -43,10 +43,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 
-import okhttp3.Connection;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,6 +60,7 @@ public class frag4 extends Fragment {
     private Context context;
     private HttpURLConnection connection;
     databaseHelper DB;
+    sendData omitData;
 
 
 

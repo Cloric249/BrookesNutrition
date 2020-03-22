@@ -1,5 +1,7 @@
 package com.example.brookesnutrition;
 
+import android.content.Intent;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,6 +13,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import static com.example.brookesnutrition.ui.main.frag2.connection;
 
@@ -20,8 +23,12 @@ public class Food {
     private double grams;
     private String name;
 
+
+
+
     public Food(String n){
         this.name = n;
+
 
     }
 
@@ -69,8 +76,7 @@ public class Food {
                     JSONObject nutrition2 = new JSONObject(json_response);
                     JSONArray x = nutrition2.getJSONArray("foods");
                     String strcal = x.getJSONObject(0).getString("nf_calories");
-                    Double cal = Double.valueOf(strcal);
-                    calories = cal;
+                    calories = Double.parseDouble(strcal);
 
 
 
