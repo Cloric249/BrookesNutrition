@@ -1,62 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/Moonstone"
-    tools:context=".ui.main.frag1">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.main.frag1">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/frag1" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-    <Spinner
-        android:id="@+id/spinnerI"
-        android:layout_width="335dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="40dp"/>
+        <Spinner
+            android:id="@+id/spinnerI"
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="40dp"/>
 
-    <EditText
-        android:id="@+id/ingredient"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="150dp" />
+        <EditText
+            android:id="@+id/ingredient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginRight="150dp" />
 
-    <Button
-        android:id="@+id/button_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="90dp"
-        />
+        <Button
+            android:id="@+id/button_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="90dp"
+            />
 
-    <Button
-        android:id="@+id/button_del"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="300dp"
-        />
+        <Button
+            android:id="@+id/button_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="300dp"
+            />
 
-    <TextView
-        android:id="@+id/information"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittextbox"
-        android:height="200dp"
-        android:lines="11"
-        android:layout_marginTop="350dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:hint="Ingredient information appears here" />
+        <TextView
+            android:id="@+id/information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittextbox"
+            android:height="200dp"
+            android:lines="11"
+            android:layout_marginTop="350dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:hint="Ingredient information appears here" />
 
 
 </RelativeLayout>
+</ScrollView>

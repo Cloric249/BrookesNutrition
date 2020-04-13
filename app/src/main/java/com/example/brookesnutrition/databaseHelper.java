@@ -14,7 +14,7 @@ public class databaseHelper extends SQLiteOpenHelper {
     private static final String COL_1 = "FOOD";
     private static final String COL_2 = "CALORIES";
     private static final String COL_3 = "TOTAL_CALORIES";
-    Cursor cursor;
+
 
 
     public databaseHelper(@Nullable Context context) {

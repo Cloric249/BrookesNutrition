@@ -111,6 +111,7 @@ public class frag2 extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 final ArrayList<String> omitList = omitData.getArrayList();
+                adapter.clear();
 
                 if (newText.length() > 2){
                     Thread thread = new Thread(new Runnable() {
@@ -149,17 +150,30 @@ public class frag2 extends Fragment {
                                 for (int i = 0; i < foods.length(); i++) {
                                     JSONObject jsonObject2 = foods.getJSONObject(i);
                                     final String name = jsonObject2.getString("food_name");
-                                    for (String str: omitList){
-                                        if (!name.contains(str)){
-                                            final Food food = new Food(name);
+                                    if (omitList== null){
 
-                                            getActivity().runOnUiThread(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    adapter.add(food);
-                                                }
-                                            });
+                                        final Food food = new Food(name);
 
+                                        getActivity().runOnUiThread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        adapter.add(food);
+                                                    }
+                                        });
+                                    }
+                                    else {
+                                        for (String str : omitList) {
+                                            if (!name.contains(str)) {
+                                                final Food food = new Food(name);
+
+                                                getActivity().runOnUiThread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        adapter.add(food);
+                                                    }
+                                                });
+
+                                            }
                                         }
                                     }
                                 }

@@ -1,4 +1,5 @@
 package com.example.brookesnutrition;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import com.example.brookesnutrition.ui.main.frag1;
@@ -8,6 +9,8 @@ import com.example.brookesnutrition.ui.main.frag4;;
 import com.example.brookesnutrition.ui.main.sendData;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,6 +29,14 @@ public class Main3Activity extends AppCompatActivity implements frag1.OnFragment
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        final int[] ICONS = new int[]{
+                R.drawable.allergy,
+                R.drawable.ic_action_name,
+                R.drawable.gym,
+                R.drawable.fruits};
+
+
+
 
         setContentView(R.layout.activity_main3);
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
@@ -33,6 +44,18 @@ public class Main3Activity extends AppCompatActivity implements frag1.OnFragment
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+
+        tabs.getTabAt(0).setIcon(ICONS[0]);
+        tabs.getTabAt(1).setIcon(ICONS[1]);
+        tabs.getTabAt(2).setIcon(ICONS[2]);
+        tabs.getTabAt(3).setIcon(ICONS[3]);
+
+
+
+        AnimationDrawable animation = (AnimationDrawable) viewPager.getBackground();
+        animation.setEnterFadeDuration(1500);
+        animation.setExitFadeDuration(3000);
+        animation.start();
 
     }
 

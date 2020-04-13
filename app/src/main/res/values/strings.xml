@@ -17,10 +17,10 @@
     <string name="text_BMR">BMR: </string>
     <string name="progress">Progress</string>
     <string name="title_activity_main3">Main3Activity</string>
-    <string name="tab_text_1">Profile</string>
-    <string name="tab_text_2">Progress</string>
+    <string name="tab_text_1">Allergies</string>
+    <string name="tab_text_2">Search</string>
     <string name="tab_text_3">Workouts</string>
-    <string name="tab_text_4">Eaten</string>
+    <string name="tab_text_4">Nutrition</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
